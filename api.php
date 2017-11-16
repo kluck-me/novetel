@@ -41,6 +41,9 @@ function main($action) {
       return $na->createComicPageText((int) array_get($_POST['after_page']), array_get($_POST['text']));
     case 'delete.page':
       return $na->deleteComicPageByNum((int) array_get($_POST['delete_num']));
+    case 'check':
+      echo $na->httpGet('http://neetsha.jp/inside/check.php');
+      exit;
     default:
       return NeetelAgent::errorData(0, 'Not support: ' . $action);
   }
@@ -48,6 +51,4 @@ function main($action) {
 
 $action = array_get($_POST['action'], array_get($_GET['action']));
 
-if ($action !== 'debug') {
-  echo json_encode(main($action));
-}
+echo json_encode(main($action));

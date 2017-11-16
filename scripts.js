@@ -22,6 +22,7 @@ var modal = {
 var app = new Vue({
   el: '#app',
   data: {
+    adHTML: window.globalAdHTML,
     initialized: false,
     requesting: false,
     alert: null,

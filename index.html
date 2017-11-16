@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Novetel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script>window.addEventListener=window.attachEvent=null</script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="xrea-ad-frendly.js"></script>
   </head>
   <body>
     <div id="app" style="display:none">
@@ -82,6 +82,7 @@
 
         <!-- stories -->
         <div class="container" v-if="stories && mode === 'stories'">
+          <div class="ad" v-html="adHTML" v-if="adHTML"></div>
           <div class="list-group">
             <div class="list-group-item" v-for="(story, storyIndex) in formStories">
               <div class="list-group">
@@ -124,6 +125,7 @@
 
         <!-- info -->
         <div class="container" v-if="info && mode === 'info'">
+          <div class="ad" v-html="adHTML" v-if="adHTML"></div>
           <div class="form-group row">
             <label for="loginFormTitle" class="col-sm-3 col-form-label">タイトル</label>
             <div class="col-sm-9">
@@ -220,6 +222,7 @@
 
         <!-- login -->
         <div class="container" v-if="!info">
+          <div class="ad" v-html="adHTML" v-if="adHTML"></div>
           <div class="form-group row">
             <label for="loginFormId" class="col-sm-3 col-form-label">ID</label>
             <div class="col-sm-9">

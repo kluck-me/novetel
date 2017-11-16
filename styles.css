@@ -1,0 +1,17 @@
+html, body, #app, fieldset, .page-editor {
+  height: 100%;
+}
+
+fieldset > .navbar + .container {
+  padding-top: 4.5rem;
+}
+
+.page-editor-form .form-group {
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  height: 100%;
+}
+
+.page-editor-form textarea {
+  resize: none;
+}

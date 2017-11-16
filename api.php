@@ -23,7 +23,7 @@ function main($action) {
     case 'login':
       $cookie = $na->login(array_get($_POST['id']), array_get($_POST['password']));
       foreach ($cookie as $k => $v) {
-        setcookie($k, $v, 0, '/');
+        setcookie($k, (string) $v, 0, '/');
       }
       return $cookie;
     case 'get.data':

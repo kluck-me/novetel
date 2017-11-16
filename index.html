@@ -127,51 +127,51 @@
         <div class="container" v-if="info && mode === 'info'">
           <div class="ad" v-html="adHTML" v-if="adHTML"></div>
           <div class="form-group row">
-            <label for="loginFormTitle" class="col-sm-3 col-form-label">タイトル</label>
+            <label for="infoFormTitle" class="col-sm-3 col-form-label">タイトル</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormTitle" v-model="formInfo.name">
+              <input type="text" class="form-control" id="infoFormTitle" v-model="formInfo.name">
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormGenre" class="col-sm-3 col-form-label">ジャンル</label>
+            <label for="infoFormGenre" class="col-sm-3 col-form-label">ジャンル</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormGenre" v-model="formInfo.category">
+              <input type="text" class="form-control" id="infoFormGenre" v-model="formInfo.category">
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormDescription" class="col-sm-3 col-form-label">あらすじ</label>
+            <label for="infoFormDescription" class="col-sm-3 col-form-label">あらすじ</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormDescription" v-model="formInfo.summary">
+              <input type="text" class="form-control" id="infoFormDescription" v-model="formInfo.summary">
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormTags" class="col-sm-3 col-form-label">タグ</label>
+            <label for="infoFormTags" class="col-sm-3 col-form-label">タグ</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormTags" v-model="formInfo.tags">
+              <input type="text" class="form-control" id="infoFormTags" v-model="formInfo.tags">
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormAuthor" class="col-sm-3 col-form-label">作者名</label>
+            <label for="infoFormAuthor" class="col-sm-3 col-form-label">作者名</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormAuthor" v-model="formInfo.author">
+              <input type="text" class="form-control" id="infoFormAuthor" v-model="formInfo.author">
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormAuthorUrl" class="col-sm-3 col-form-label">作者紹介URL</label>
+            <label for="infoFormAuthorUrl" class="col-sm-3 col-form-label">作者紹介URL</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormAuthorUrl" v-model="formInfo.xurl">
+              <input type="text" class="form-control" id="infoFormAuthorUrl" v-model="formInfo.xurl">
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormMessage" class="col-sm-3 col-form-label">作者コメント</label>
+            <label for="infoFormMessage" class="col-sm-3 col-form-label">作者コメント</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormMessage" v-model="formInfo.comment">
+              <input type="text" class="form-control" id="infoFormMessage" v-model="formInfo.comment">
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormMagazine" class="col-sm-3 col-form-label">掲載誌</label>
+            <label for="infoFormMagazine" class="col-sm-3 col-form-label">掲載誌</label>
             <div class="col-sm-9">
-              <select class="form-control" id="loginFormMagazine" v-model="formInfo.magazine">
+              <select class="form-control" id="infoFormMagazine" v-model="formInfo.magazine">
                 <option value="1">週刊少年VIP</option>
                 <option value="2">週刊ヤングVIP</option>
                 <option value="3">月刊コミックニート</option>
@@ -184,9 +184,9 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormStatus" class="col-sm-3 col-form-label">状態</label>
+            <label for="infoFormStatus" class="col-sm-3 col-form-label">状態</label>
             <div class="col-sm-9">
-              <select class="form-control" id="loginFormStatus" v-model="formInfo.state">
+              <select class="form-control" id="infoFormStatus" v-model="formInfo.state">
                 <option value="1">連載</option>
                 <option value="2">読切</option>
                 <option value="3">休載</option>
@@ -196,9 +196,9 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="loginFormStatus" class="col-sm-3 col-form-label">タグ</label>
+            <label for="infoFormStatus" class="col-sm-3 col-form-label">タグ</label>
             <div class="col-sm-9">
-              <select class="form-control" id="loginFormTagStatus" v-model="formInfo.taggable">
+              <select class="form-control" id="infoFormTagStatus" v-model="formInfo.taggable">
                 <option value="0">利用不可</option>
                 <option value="1">利用可</option>
               </select>
@@ -223,23 +223,25 @@
         <!-- login -->
         <div class="container" v-if="!info">
           <div class="ad" v-html="adHTML" v-if="adHTML"></div>
-          <div class="form-group row">
-            <label for="loginFormId" class="col-sm-3 col-form-label">ID</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="loginFormId" v-model="formLogin.id">
+          <form v-on:submit.stop.prevent="login">
+            <div class="form-group row">
+              <label for="loginFormId" class="col-sm-3 col-form-label">ID</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="loginFormId" v-model="formLogin.id">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="loginFormPassword" class="col-sm-3 col-form-label">パスワード</label>
-            <div class="col-sm-9">
-              <input type="password" class="form-control" id="loginFormPassword" v-model="formLogin.password">
+            <div class="form-group row">
+              <label for="loginFormPassword" class="col-sm-3 col-form-label">パスワード</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="loginFormPassword" v-model="formLogin.password">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-sm-9 offset-sm-3">
-              <button type="submit" class="btn btn-primary" v-on:click="login">ログイン</button>
+            <div class="form-group row">
+              <div class="col-sm-9 offset-sm-3">
+                <button type="submit" class="btn btn-primary">ログイン</button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </fieldset>
     </div>
